@@ -4,12 +4,39 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TriangleTest{
 
+    @BeforeAll
+    public static void setup(){
+        System.out.println("BeforeAll demo: setup test execution");
+    }
+
+    @AfterAll
+    public static void teardown(){
+        System.out.println("AfterAll demo: tear down tests");
+    }
+
+    @BeforeEach
+    public void initTest(){
+        System.out.println("BeforeEach demo: init test case");
+    }
+
+    @AfterEach
+    public void tearDownTest(){
+        System.out.println("AfterEach demo: tear down test case");
+    }
+
     @Test
     public void testGenericTriangle(){
+        System.out.println("Testing generic triangle");
         Triangle triangle = new Triangle(3,4,6);
         assertTrue(triangle instanceof Triangle);
         assertFalse(triangle.isIsosceles());
@@ -19,6 +46,7 @@ public class TriangleTest{
 
     @Test
     public void testIsoscelesTriangle(){
+        System.out.println("Testing isosceles triangle");
         Triangle triangle = new Triangle(3,3,5);
         assertTrue(triangle.isIsosceles());
 
